@@ -2,6 +2,8 @@ module github.com/tilt-dev/starlark-lsp
 
 go 1.19
 
+replace github.com/tilt-dev/starlark-lsp v0.0.0-20230129025304-305066b3a47f => github.com/cutecutecat/starlark-lsp v0.0.0-20230129025304-305066b3a47f
+
 require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/pkg/errors v0.9.1
