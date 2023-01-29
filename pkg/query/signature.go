@@ -99,10 +99,22 @@ func (s Signature) Label() string {
 }
 
 func (s Signature) Symbol() Symbol {
+	var argsFormatted string
+	for _, arg := range s.Docs.Args() {
+		argsFormatted += fmt.Sprintf("%s: %s\n", arg.Name, arg.Desc)
+	}
+	detail := strings.Join([]string{
+		s.Docs.Description,
+		"\n",
+		"# Parameters",
+		argsFormatted,
+		"\n",
+		"# Returns",
+		s.Docs.Returns()}, "\n")
 	return Symbol{
 		Name:   s.Name,
 		Kind:   protocol.SymbolKindFunction,
-		Detail: s.Docs.Description,
+		Detail: detail,
 		Location: protocol.Location{
 			URI:   s.docURI,
 			Range: s.Range,
